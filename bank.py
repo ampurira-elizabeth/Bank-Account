@@ -7,6 +7,7 @@ class Account:
         self.balance=0
         self.deposits=[]
         self.withdrawals=[]
+        self.transaction=100
     
     def withdraw (self,amount):
         self.amount=amount
@@ -18,6 +19,12 @@ class Account:
             
              self.balance -=amount
              self.withdrawals.append(amount)
+        withdrawal_amount=self.balance-self.transaction
+        if amount>withdrawal_amount:
+            return "insufficient balance"
+        self.balance-=amount+self.transaction
+              
+             
         return f"Thank you for the withdraw, your new balance is  {self.balance}"
     def deposit(self,amount):
         self.amount=amount
@@ -36,9 +43,9 @@ class Account:
     def withdraw_statement(self):
         for y in self.withdrawals: 
             print(y)
-    def transaction(self):
-         self.balance -=self.amount+100
-         return self.balance  
+    # def transaction(self):
+    #      self.balance -=self.amount+100
+    #      return self.balance  
          
     def current_balance(self):
         return f" Your current balance is  {self.balance}" 
