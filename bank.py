@@ -30,7 +30,7 @@ class Account:
         if amount>withdrawal_amount:
             return "insufficient balance"
         self.balance-=amount+self.transaction
-        return f"You have withdrawn Ugshs.{self.withdrawals} and your new balance is {self.balance} on {date.strftime('%d/%m/%Y')})"
+        return f"You have withdrawn Ugshs.{amount} and your new balance is {self.balance} on {date.strftime('%d/%m/%Y')})"
               
       
     def deposit(self,amount):
@@ -44,7 +44,7 @@ class Account:
              dct={"date":date.strftime("%d/%m/%Y"),"amount":amount,"narration":f'thank you for depositing {amount} on {date}'}
              self.deposits.append(dct)
              
-        return f"You have deposited Ugshs.{amount} and your new balance is {self.balance})"
+        return f"You have deposited Ugshs.{amount} and your new balance is {self.balance} on {date.strftime('%d/%m/%Y')})"
     
          
     def deposit_statement(self):
@@ -73,9 +73,9 @@ class Account:
         if amount>sum/3:
             return f"you can borrow upto {sum/3}" 
         if self.balance!=0:
-            return f"you have Ugshs.{self.balance} you cant borrow yet you still have balance on your account"
+            return f"you have Ugshs.{self.balance} you cant borrow any money because you still have balance of {self.balance} on your account"
         if self.loan_balance!=0:
-            return f"you have a debt of {self.loan_balance} you have to pay first for you to borrow."
+            return f"you have a debt of {self.loan_balance} you have to pay first for you to borrow money."
         else:
             interest= 3/100*(amount)
             self.loan_balance+=amount+interest
@@ -90,7 +90,7 @@ class Account:
                
          else:
              self.loan_balance-=amount
-             return f"thank you"
+             return f"thank you, and your debt balance remains {self.loan_balance}"
             
          
     def transfer(self,amount,new_account):
