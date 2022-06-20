@@ -101,7 +101,7 @@ class Account:
         if isinstance(new_account,Account):
             self.balance-=amount
             new_account.balance+=amount
-            return f"you have sent {amount} to {new_account} with the name {new_account.name}.your new balance is {self.balance}"
+            return f"you have sent {amount} to  the new account with the name {new_account.name}.your new balance is {self.balance}"
         
              
 
