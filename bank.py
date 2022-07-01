@@ -59,7 +59,7 @@ class Account:
     def full_statement(self):
         statement=self.deposits+self.withdrawals
         for a in statement:
-            statement.sorted(statement ,key=lambda a:a['date'],reverse=True)
+            statement.sort(key=lambda a:a['date'],reverse=True)
             date=a['date']
             naration=a['narration']
             amount=a['amount']
