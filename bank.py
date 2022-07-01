@@ -1,4 +1,5 @@
 from datetime import datetime
+from ntpath import join
 class Account:
     def __init__(self,name,phone_number,account_number,id):
         self.name=name
@@ -58,7 +59,7 @@ class Account:
     def full_statement(self):
         statement=self.deposits+self.withdrawals
         for a in statement:
-            statement.sort(key=lambda a:a['date'],reverse=True)
+            statement.sorted(statement ,key=lambda a:a['date'],reverse=True)
             date=a['date']
             naration=a['narration']
             amount=a['amount']
@@ -70,14 +71,14 @@ class Account:
             
         if len(self.deposits) <10:
             return f"you are not eligible to borrow.make {10-len(self.deposits)} to borrow "
-        if amount<100:
+        elif amount<100:
             return f"you can borrow atleast 100"  
-        if amount>sum/3:
+        elif amount>sum/3:
             return f"you can borrow upto {sum/3}" 
-        if self.balance!=0:
+        elif self.balance!=0:
             return f"you have Ugshs.{self.balance} you cant borrow any money because you still have balance of {self.balance} on your account"
-        if self.loan_balance!=0:
-            return f"you have a debt of {self.loan_balance} you have to pay first for you to borrow money."
+        elif self.loan_balance!=0:
+            return f"you have a unpaid debt of {self.loan_balance} you have to pay first for you to borrow money."
         else:
             interest= 3/100*(amount)
             self.loan_balance+=amount+interest
